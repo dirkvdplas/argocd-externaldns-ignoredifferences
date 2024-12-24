@@ -1,0 +1,15 @@
+project: default
+destination:
+  server: https://kubernetes.default.svc
+  namespace: external-dns
+ignoreDifferences:
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+sources:
+  - repoURL: https://github.com/dirkvdplas/argocd-externaldns-ignoredifferences.git 
+    path: manifests
+    targetRevision: main 
+  - repoURL: registry-1.docker.io/bitnamicharts
+    path: external-dns
+    targetRevision: 8.7.1
+    chart: external-dns
